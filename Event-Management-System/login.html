@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration & Login</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 800px;
+            display: flex;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .img-container {
+            flex: 1;
+            background: url('/assets/img1.png') no-repeat center center/cover;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+
+        .form-container {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            transition: all 0.3s ease;
+        }
+
+        .form-container input:focus {
+            outline: none;
+            border-color: #007bff;
+            background-color: #fff;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background: linear-gradient(135deg, #0056b3, #007bff);
+        }
+
+        .form-container p {
+            margin-top: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .form-container p a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-container p a:hover {
+            text-decoration: underline;
+        }
+
+        .hidden {
+            display: none;
+        }
+         
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="img-container">
+    </div>
+
+    <!-- Registration Form -->
+    <div id="registration-form" class="form-container">
+        <h2>Create Account</h2>
+        <form onsubmit="registerUser(event)">
+            <input type="text" id="reg-username" placeholder="Username" required>
+            <input type="email" id="reg-email" placeholder="Email" required>
+            <input type="password" id="reg-password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+    </div>
+
+    <!-- Login Form -->
+    <div id="login-form" class="form-container hidden">
+        <h2>Login to Your Account</h2>
+        <form onsubmit="loginUser(event)">
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+    </div>
+</div>
+
+<script>
+    function showRegister() {
+        document.getElementById('registration-form').classList.remove('hidden');
+        document.getElementById('login-form').classList.add('hidden');
+    }
+    function showLogin() {
+        document.getElementById('login-form').classList.remove('hidden');
+        document.getElementById('registration-form').classList.add('hidden');
+    }
+    async function registerUser(event) {
+        event.preventDefault();
+        const username = document.getElementById('reg-username').value;
+        const email = document.getElementById('reg-email').value;
+        const password = document.getElementById('reg-password').value;
+
+        const userData = `Username: ${username}\nEmail: ${email}\nPassword: ${password}\n`;
+
+        const handle = await window.showSaveFilePicker({
+            suggestedName: 'user_data.txt',
+            types: [{
+                description: 'Text Files',
+                accept: {'text/plain': ['.txt']}
+            }]
+        });
+
+        const writable = await handle.createWritable();
+        await writable.write(userData);
+        await writable.close();
+
+        alert('Registration successful! Redirecting to login...');
+        showLogin();
+    }
+
+    async function loginUser(event) {
+        event.preventDefault();
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+
+        const [fileHandle] = await window.showOpenFilePicker({
+            types: [{
+                description: 'Text Files',
+                accept: {'text/plain': ['.txt']}
+            }]
+        });
+
+        const file = await fileHandle.getFile();
+        const contents = await file.text();
+        if (contents.includes(`Email: ${email}`) && contents.includes(`Password: ${password}`)) {
+            alert('Login successful !');
+            window.location.href = '/index.html';
+        } else {
+            alert('Invalid credentials. Please try again.');
+        }
+    }
+</script>
+<script src="script.js"></script>
+</body>
+</html>

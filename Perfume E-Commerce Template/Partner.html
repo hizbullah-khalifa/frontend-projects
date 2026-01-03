@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfume Website</title>
+    <link rel="website icon" href="img/logo.png" type="png" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <section id="header">
+         <a href="./Index.html" class="site-title">Perfume Mart</a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <div class="dropdown">
+                    <li class="dropbtn">Perfume <i class="far fa-arrow-down"></i></li>
+                    <div class="dropdown-content">
+                        <a href="./Men Perfume.html">Men</a>
+                        <a href="./Ladies.html">Ladies</a>
+                        <a href="./luxury perfume.html">Luxury</a>
+
+                    </div>
+                </div>
+                <li><a class="active" href="partner.html">Become a Sales Partner</a></li>
+                <li><a href="./About us.html">About Us</a></li>
+                <li><a href="./Contact Us.html">Contact Us</a></li>
+                <li>
+
+        </div>
+    </section>
+    <section id="hero" class="hero-partner">
+        <!-- <h4>Aktualisieren Sie Ihre Erfahrung noch heute</h4> -->
+        <h2>Sales partner</h2>
+        <h1>Welcome</h1>
+        <p>Here you can register as a sales partner with Dulfparadies <br>and get started right away.</p>
+        <button onclick="location.href='#form-details'">Join now</button>
+    </section>
+    <section id="form-details" class="section-m1">
+        <form action="partner-message.php" method="post">
+            <span>Leave a message</span>
+            <h2>Join us on our path to success today!</h2>
+            <input type="text" name="name" placeholder="Enter Your Name" required />
+            <input type="email" name="email" placeholder="Enter Your Email" required />
+            <input type="number" name="mobile" placeholder="Enter Your Phone-Number" required />
+            <textarea name="message" cols="30" rows="10" placeholder="Questions or comments"></textarea>
+            <button class="normal" name="submit">submit</button>
+        </form>
+        <div class="people">
+            <img src="./Images/2.png" alt="" />
+            <p>
+                <span>Salman Khan</span> Owner <br />
+                Phone: +92123456789 <br />Email: abc@gmail.com
+            </p>
+        </div>
+    </section>
+   
+    <!-- //Partner Section -->
+  <section id="banner" class="section-m1" style="background-image: url(./Images/b2.jpg) ">
+    <h4>Become a sales partner</h4>
+    <h2>
+      Unlock success with our<br><span>partnership</span>
+    </h2>
+    <button class="normal" onclick="window.location.href='partner.html#form-details';">
+      Join today!
+    </button>
+  </section>
+
+
+     <!-- newsletter Section -->
+
+  <section id="newsletter" class="section-p1 section-m1">
+    <div class="newstext">
+      <h4>Sign up for the newsletter</h4>
+      <p>
+        Receive email updates on<span>Famous Perfume</span>for every occasion. Let's Connect.
+      </p>
+    </div>
+    <div class="form">
+      <input type="text" required placeholder="Enter Your Email Address" />
+      <button class="normal">Registration</button>
+    </div>
+    <!-- Footer Section -->
+
+  </section>
+  <footer class="section-p1">
+    <div class="col">
+      <img class="logo" src="img/logo.png" alt="Logo" />
+      <h4>Contact</h4>
+      <p><strong>Address: </strong> Lewal Teach, Timeragara</p>
+      <p><strong>Phone: </strong> +92123456789</p>
+      <p><strong>Opening hours: </strong> 9 X 5</p>
+      <div class="follow">
+        <h4>Follow us</h4>
+        <div class="icon">
+          <a href="https://www.facebook.com/lewal.net"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.linkedin.com/company/lewaltech/"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com/lewaltechnologies/#"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.lewal.net/www.youtube.com/@lewal.creators"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h4>Quick links</h4>
+      <a href="./About us.html">About us</a>
+      <a href="delivery.html">P</a>
+      <a href="privacy.html">Products</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html"> Terms and condition</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="#">Register</a>
+      <a href="#">View shopping cart</a>
+      <a href="#">My wish list</a>
+      <a href="#">Track my order</a>
+      <a href="#">Help</a>
+    </div>
+    <div class="col">
+      <p>Secure payment gateways</p>
+      <img src="./Images/pay.png" alt="" />
+    </div>
+    <div class="copyright">
+      <p>
+        <i class="fa fa-copyright"></i> 2025,<a href="https://www.lewal.net/">
+          <b>Hizbullah Khalifa.</b></a>
+        All Rights reversed.
+      </p>
+    </div>
+  </footer>
+
+    <script>
+        var nav = document.getElementById("navbar");
+        var header = document.querySelector('#header');
+        window.addEventListener('scroll', function (event) { // To listen for event
+            event.preventDefault();
+            if (window.scrollY <= 150) { // Just an example
+                header.style.backgroundColor = 'transparent'; // or default color
+            } else {
+                header.style.backgroundColor = '#fff';
+            }
+        });
+    </script>
+    <script src="script.js"></script>
